@@ -1,8 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>profile</h2>
-<form action="/add" method="post">
+<form action="/profile" method="post">
+
+    <div class="container">
+
+        <h2>{{ session['username'] }}</h2>
+        <table class="guess_table">
+
+            <thead>
+                <th>Date</th>
+                <th>User</th>
+                <th>Game</th>
+                <th>review</th>
+                <th>Score</th>
+            </thead>
+        
+            <tbody>
+                {% for guess in guesses %}
+                <tr>
+                    <td>{{ session['date'] }}</td>
+                    <td>{{ session['username'] }}</td>
+                    <td>{{ session['game'] }}</td>
+                    <td>{{ session['review'] }}</td>
+                    <td>{{ session['score'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        {% if session['username'] %}
     
+    
+    
+        
+        {% endif %}
+    
+    </div>
+
 </form>
 {% endblock %}

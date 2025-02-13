@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, session, redirect
 import db
 
 app = Flask(__name__)
-app.secret_key = "gtg"
+app.secret_key = "27"
 
 @app.route("/")
 def Home():
@@ -55,7 +55,24 @@ def Add():
 
     return render_template("add.html")
 
+guessData = db.GetAllGuesses()
 
+@app.route("/profile", methods=["GET","POST"])
+def profile():
+
+
+    if request.method == "POST":
+        user_id = session['id']
+        date = session['date']
+        game = session['game']
+        review = session['review']
+        score = session['score']
+        
+        db.GetProfile(username, user_id, guessdata, date, game, review, score)
+
+        return redirect("/")
+
+    return render_template("profile.html")
 
 app.run(debug=True, port=5000)
 

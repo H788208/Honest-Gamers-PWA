@@ -54,3 +54,13 @@ def AddGuess(user_id, date, game, review, score):
     db.commit()
 
     return True
+
+def GetProfile(guessdata, username, user_id, date, game, review, score):
+    
+    db = GetDB()
+    db.execute("SELECT * FROM Users WHERE username = session", (username,)).fetchone()
+    
+    db.commit()
+    
+    return True
+
