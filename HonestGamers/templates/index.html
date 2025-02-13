@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <p>Welcome to Honest Gamers. The only website that offers truly honest reviews of your favorite games.</p>
+
+    {% if session['username'] %}
+    <br>
+    <p>Hello {{ session['username'] }}</p>
+
+
+    <a href="/add"><button>Add Review</button></a>
+
+    
+    {% endif %}
+
+</div>
+
+<br>
+
+<table class="guess_table">
+
+    <thead>
+        <th>Date</th>
+        <th>User</th>
+        <th>Game</th>
+        <th>review</th>
+        <th>Score</th>
+    </thead>
+
+    <tbody>
+        {% for guess in guesses %}
+        <tr>
+            <td>{{ guess['date'] }}</td>
+            <td>{{ guess['username'] }}</td>
+            <td>{{ guess['game'] }}</td>
+            <td>{{ guess['review'] }}</td>
+            <td>{{ guess['score'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+{% endblock %}
